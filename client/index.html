@@ -1,0 +1,514 @@
+<!DOCTYPE html>  
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=0.63">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/jquery-3.2.1.js"></script>
+<script src="/js/client.js"></script>
+<script src="/js/scale.js"></script>
+<script src="/js/DragDropTouch.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/style.css">
+</head>   
+
+<title>南巴水鱼 - 南巴人的娱乐</title>
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96028203-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<div class="wrapper">
+
+<div class = "wrapperL">
+
+<h1>水鱼在线</h1>
+ <div id="error-container"></div>
+ 
+<input type="text" maxlength="9" id="signUp-uname"  name="name" onkeypress="handleLogin(event);noWhiteSpace(event)" value="" placeholder="请输入用户名" required>
+<input type="password" id = "signUp-psw" placeholder="请输入密码" onkeypress="handleLogin(event);noWhiteSpace(event)" name="psw" required>
+<button id = "ready"; style="width:auto"; class = "btnS smallButton"  onClick="readyFunc()";>登陆</button>
+<button id = "signUpReady" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class = "btnS smallButton">注册</button>
+
+<div id="id01" class="signUpModal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+  <form id ="signUpForm" class="signUpModal-content animate" action = "/" method = "post">
+    <div class="signUpContainer">
+      <label><b>用户名</b></label>
+     <input type="text" id = "signUpUname" placeholder="请输入用户名" maxlength="9" name="username" oninvalid="this.setCustomValidity('请输入用户名')"
+ oninput="setCustomValidity('')" required style = " width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;">
+
+      <label><b>密码</b></label>
+      <input type="password" id = "signUpPws" maxlength="15" placeholder="请输入密码" name="password" oninvalid="this.setCustomValidity('请输入密码')"
+ oninput="setCustomValidity('')" required style = " width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;">
+
+      
+      <input type="checkbox" checked="checked"> 记住我
+     
+
+      <div class="clearfix">
+        <button type="signUpButton" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">取消</button>
+        <button type="submit" class="signupbtn">注册</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" id = "chooseTables">
+                                        
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">请选择游戏桌
+    <span class="caret"></span></button>
+    
+    <ul class="dropdown-menu">
+      
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">2人桌<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class = "select" id = "横州12" ><a tabindex="-1" href="#"><align = "middle">-----横州-----</a></li>
+          <li class = "select" id = "百合22" ><a tabindex="-1" href="#"><align = "middle">-----百合-----</a></li>
+          <li class = "select" id = "蒙垌32" ><a tabindex="-1" href="#"><align = "middle">-----蒙垌-----</a></li>
+            </ul>
+            </li>
+            
+        <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">3人桌<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class = "select" id = "三角坪43" ><a tabindex="-1" href="#"><align = "middle">-----三角坪-----</a></li>
+          <li class = "select" id = "山泊塘53" ><a tabindex="-1" href="#"><align = "middle">-----山泊塘-----</a></li>
+          <li class = "select" id = "大沙田63" ><a tabindex="-1" href="#"><align = "middle">-----大沙田-----</a></li>
+       </ul>
+      </li>
+      
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">4人桌<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class = "select" id = "一号大道74" ><a tabindex="-1" href="#"><align = "middle">-----一号大道-----</a></li>
+          <li class = "select" id = "九龙瀑布84" ><a tabindex="-1" href="#"><align = "middle">-----九龙瀑布-----</a></li>
+          <li class = "select" id = "莲洲公路94" ><a tabindex="-1" href="#"><align = "middle">-----莲洲公路-----</a></li>
+       </ul>
+      </li>
+      
+         <li class="dropdown-submenu">
+       <li class = "select" id = "exitFromGame" ><a tabindex="-1" href="#"><align = "middle">回大厅</a></li>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<p id="welcome" ></p>
+
+<button id = "exitGame"; class = "btnS smallButton" onclick = "exitGames()" style = "display:none">退出游戏</button>
+
+<div id="messages" style="width:260px;height:220px;overflow-y:scroll"></div>
+
+
+
+<div id = "chat"
+   style="
+      top: 411px;
+      position: absolute;
+      z-index: 1;
+      visibility: hidden;">
+      <input type="text" id="message" onkeypress="handle(event)">
+     <button type="button" name="button" class = "btnS smallButton"  onclick="sendMessage()">发送</button>
+        <div id="message-container" style="width:260px;height:200px;overflow-y:scroll"></div>
+</div>
+
+</div>
+
+
+
+<div class = "wrapperM">
+
+<div id="myProgress">
+  <div id="myBar">10%</div>
+</div>
+
+<div id ="card1", class = "card"
+   style="
+      top: 490px;
+      left: 25px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+<select id = "card1Change" onchange="laiZiChange1()">
+  <option disabled selected value>换牌</option>
+  <option value="1">A</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">J</option>
+  <option value="12">Q</option>
+  <option value="13">K</option>
+</select>
+<br id = "c1">
+</div>
+
+<div id ="card2", class = "card"
+   style="
+      top: 490px;
+      left: 80px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+<select id = "card2Change" onchange="laiZiChange2()">
+  <option disabled selected value>换牌</option>
+  <option value="1">A</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">J</option>
+  <option value="12">Q</option>
+  <option value="13">K</option>
+</select>
+<br id = "c2">
+</div>
+
+<div
+ style="
+      top: 520px;
+      left: 200px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+<p class = "drankCups" id = "self"></p>
+</div>
+
+<div id ="card3", class = "card"
+   style="
+      top: 490px;
+      left: 340px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+    <select id = "card3Change" onchange="laiZiChange3()">
+  <option disabled selected value>换牌</option>
+  <option value="1">A</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">J</option>
+  <option value="12">Q</option>
+  <option value="13">K</option>
+</select>
+<br id = "c3">
+</div>
+
+
+<div id ="card4", class = "card",
+  style="
+      top: 490px;
+      left:395px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+    <select id = "card4Change" onchange="laiZiChange4()">
+  <option disabled selected value>换牌</option>
+  <option value="1">A</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">J</option>
+  <option value="12">Q</option>
+  <option value="13">K</option>
+  </select>
+<br id= "c4">
+</div>
+
+
+<div id ="player1card1"
+   style="
+      top: 125px;
+      left: 25px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+</div>
+<div id ="player1card2"
+   style="
+      top: 125px;
+      left: 80px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+</div>
+<div id ="player1card3"
+   style="
+      top: 125px;
+      left: 340px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+</div>
+<div id ="player1card4"
+   style="
+      top: 125px;
+      left: 395px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+        <h  id="h1"></h>
+        <p class = "drankCups" id="playerD1"></p>
+</div>
+
+
+
+<div id ="player2card1"
+   style="
+      top: 215px;
+      left: 25px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+</div>
+<div id ="player2card2"
+   style="
+      top: 215px;
+      left: 80px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+</div>
+<div id ="player2card3"
+   style="
+      top: 215px;
+      left: 340px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+</div>
+<div id ="player2card4"
+   style="
+      top: 215px;
+      left: 395px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+        <h id="h2"></h>
+        <p class = "drankCups"  id="playerD2"></p>
+</div>
+
+
+<div id ="player3card1"
+   style="
+      top: 35px;
+      left: 25px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+</div>
+<div id ="player3card2"
+   style="
+      top: 35px;
+      left: 80px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+</div>
+<div id ="player3card3"
+   style="
+      top: 35px;
+      left: 340px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+</div>
+<div id ="player3card4"
+   style="
+      top: 35px;
+      left: 395px;
+      position: absolute;
+      z-index: 1;
+      visibility: show;">
+        <h id="h3"></h>
+        <p class = "drankCups" id="playerD3"></p>
+</div>
+
+
+<div id="exit" 
+style="
+      top: 250px;
+      left: 90px;
+      position: absolute;
+      z-index: 1;">
+<p id = "exitDisplay"></p>
+</div>
+
+
+
+<div id="post_1" 
+style="
+      top: 350px;
+      left:30px;
+      position: absolute;
+      z-index: 1;
+      visibility: hidden;">
+  <button id = "showCard" class="playButton" onclick="unCoverCard()" >开牌</button>
+</div>
+
+<div
+ style="
+      top: 350px;
+      left: 195px;
+      position: absolute;
+      z-index: 1;
+      visibility: hidden;">
+  <button id = "forceAttack" class="playButton" onclick="qiangGong()" >强攻</button>
+ 
+</div>
+
+<div id="post_2"
+ style="
+      top: 350px;
+      left: 360px;
+      position: absolute;
+      z-index: 1;
+      visibility: hidden;">
+        <button id = "coverCard" class="playButton" onclick="coverCard()">盖牌</button>
+ 
+</div>
+
+
+<div id="BuildCard" 
+style="
+      top: 350px;
+      left: 175px;
+      position: absolute;
+      z-index: 1;
+      visibility: hidden;">
+  <button id = "buildCards" class="playButton"  onclick="cardsBuilded()" >摆牌确认</button>
+</div>
+
+
+<div id="dialogbox"
+style="
+      top: 315px;
+      left: 62px;
+      position: absolute;">
+  <div>
+    <div id="dialogboxhead"></div>
+    <div id="dialogboxbody"></div>
+    <div id="dialogboxfoot"></div>
+  </div>
+</div>
+
+<div id="timer"
+ style= " 
+      top: 30px;
+      left: 160px;
+      visibility: hidden;
+      position: absolute;">
+       <p id ="counter" style = "text-align: center" ></p>
+       <button id = "zhuangJia" class="playButton" onclick="zhuangJiaCon()" >我要当庄家</button>
+</div>
+
+
+</div>
+
+
+
+<div class = "wrapperR">
+
+<div id="table-wrapper", style="
+      top:480px;
+      position:absolute;
+      overflow-x:auto;">
+
+</div>
+</div>
+
+
+
+
+
+ 
+  <!-- Trigger the modal with a link-->
+ 
+ <p style = "
+   position:fixed;
+   top:10px;
+    right: 10px">查询规则请 <a href="#" data-toggle="modal" data-target="#myModal">戳我</a> 或者试试<a href="http://nanbayule.com/single/" target="_blank"> 单机版</a></p>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">南巴水鱼</h4>
+        </div>
+        <div class="modal-body">
+        <p>1.每局每位玩家会拿到四张扑克牌，玩家需要对拿到的手牌根据具体的情况进行重新摆牌组合。</p>
+          <p>2.摆牌时，手牌需要分为两对，可以分列摆牌区域的左右两边，位置不限，系统会根据您摆牌的具体情况自动判断哪对为大，哪对为小，如果没有进行人工摆牌，系统将会使用原始牌面。</p>
+          <p>3.最大的组合为四张一样的牌“炸弹”，下来依次是两对一样的牌“水鱼”，一对一样的牌“宝”，两对不一样的牌“正常牌”，和两对每对每张都不相同，但每队相加的个位数都为0的牌“麻麻”。 麻麻最小但能杀水鱼。</p>
+           <p>4.牌的大小顺序从大到小是AKQJ1098765432,花色大小是黑桃红心梅花方块。如果KQJ10用做“正常牌”的散对组合，它们的牌面价值会变0，如果A用作“正常牌”的牌面组合，牌面价值是1.但是如果用这些牌组成对子如“炸弹”“水鱼”或“宝”，它们的牌面价值是它们本来的价值。</p>
+          <p>5.如出现点数相同，则比较对子中的大面值牌的点数或花色。比如，两个一样的“水鱼”，拿到大对中的大花色者赢。如果“宝”相同，也是比较花色。“正常牌”或者“麻麻”则比较组合中的大数，按牌的大小顺序对比（如A>K,10>9),如大数点数相同则比花色。</p>
+          <p>6.每副牌有大小王两张赖子牌。如果抽到大小王，可以用其变成任何牌，但变成的牌花色将会小于方块（如王变成的4小于方块4)。如果玩家抽到大小王没有变牌，按下摆牌确认后系统将会为其自动随机变牌。</p>
+          <p>7.所有玩家摆牌确认后，拿到“水鱼”或“炸弹”的玩家将会自动亮牌。如果庄家拿到“水鱼”或“炸弹”将会直接进入比较大小阶段。如果所有闲家拿到“水鱼”或“炸弹”，也会直接比较大小。如果庄家没有“水鱼”“炸弹”，闲家只有一部分有“水鱼””炸弹”。这部分闲家将会先亮牌，等到其他闲家确认游戏策略后才一起和庄家比大小。</p>
+          <p>8.闲家可以“盖牌”“开牌”“强攻”，选择“开牌”的闲家将会自动开牌。庄家可以选择“杀”或者“走水”。选择“盖牌”的闲家不会立即开牌，庄家可以“杀”或者“认输”。选择强攻的闲家将会开左边两张牌，庄家可以“杀”或者“认输”。</p>
+          <p>9.闲家选择“盖牌”或“强攻”需两对双杀庄家为赢，否则为输。闲家选择“开牌”只需要一对赢庄家。但是如果闲家“开牌”庄家“走水”然后闲家强攻反杀，闲家需要两对双杀庄家才为赢。</p>
+          <p>10.罚酒以半杯为底，闲家“盖牌”或“开牌”，庄家认输惩罚一倍，庄家开牌惩罚两倍。闲家“强攻”庄家认输惩罚两倍，庄家开牌惩罚四倍。“水鱼”四倍，“麻麻”杀“水鱼”六倍，“水鱼”杀“水鱼”八倍。“炸弹”六倍。“炸弹”杀“炸弹”十倍。</p>               
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+
+<footer class = "footer">
+<hr>
+南巴娱乐科技有限公司 <a target="_blank" href="http://www.miitbeian.gov.cn">桂ICP备17003595号-1</a>
+</footer>
+
+<script src="/js/moveCards.js"></script>
+
+</body>
+</html>
