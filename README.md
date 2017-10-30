@@ -13,3 +13,5 @@ Installation Instructions:
 5:You can open another command line window and execute mongo, to see the data or the database structure.Currently there are four documents.
 
 6:Make necessary adjustments and enjoy the game!(open a brower and the url will be http://localhost:8000/)
+
+PS:Currently all the character are in Chinese can translate to English.:)
