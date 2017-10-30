@@ -2,7 +2,7 @@ local poker game in nanning region
 一款风靡广西南宁地区的纸牌游戏
 Installation Instructions:
 
-1:Install npm if has not been done:http://blog.npmjs.org/post/85484771375/how-to-install-npm
+1:Install npm if has not been done:http://blog.npmjs.org/post/85484771375/how-to-install-npm /n
 2:Navigate to the folder directory in the command line, execute npm install, to install all the node modules.
 3:Execute nodemon server.js, to launch the server, the port number is set to 8000.
 4:Open another command line window, execute mongod, to lauch the mongo db server.
