@@ -1,5 +1,5 @@
-local poker game in nanning region
-一款风靡广西南宁地区的纸牌游戏
+local drinking poker game in the Nanning,GuangXi region
+一款风靡广西南宁地区的拼酒类纸牌游戏
 Installation Instructions:
 
 1:Install npm if has not been done:http://blog.npmjs.org/post/85484771375/how-to-install-npm 
