@@ -1,14 +1,15 @@
 html, body {
-  background-image: url("/poker/background.jpg");
-  height: 100%;
-  margin-left: 8px;
+    background-image: url("/poker/background.jpg");
+    height: 100%;
+    margin-left: 8px;
     margin-right: 8px;
-    font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体";
     color: #CD853F
 }
+
 /* login form */
-#signUp-uname,#signUp-psw{
-    
+
+#signUp-uname, #signUp-psw {
     margin: 5px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -16,7 +17,8 @@ html, body {
 }
 
 /* signUp Modal form */
-form  button {
+
+form button {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -25,36 +27,56 @@ form  button {
     cursor: pointer;
     width: 100%;
 }
+
 .cancelbtn {
     padding: 14px 20px;
-    background-color: #CD853F; 
+    background-color: #CD853F;
 }
+
 .signupbtn {
-     background-color: #0A7E8C;
+    background-color: #0A7E8C;
 }
-.cancelbtn,.signupbtn {float:left;width:50%}
+
+.cancelbtn, .signupbtn {
+    float: left;
+    width: 50%
+}
+
 .signUpContainer {
     padding: 16px;
 }
+
 .signUpModal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
     padding-top: 60px;
 }
+
 .signUpModal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
+    /* Could be more or less, depending on screen size */
 }
+
 .close {
     position: absolute;
     right: 35px;
@@ -64,39 +86,41 @@ form  button {
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
     color: red;
     cursor: pointer;
 }
 
 /* Clear floats */
+
 .clearfix::after {
     content: "";
     clear: both;
     display: table;
 }
+
 /* signUp Modal form */
 
 /* loading bar*/
 
 #myProgress {
-  position:absolute;
-  display:none;
-  width: 400px;
-  top:30%;
-  background-color: #ddd;
-   
+    position: absolute;
+    display: none;
+    width: 400px;
+    top: 30%;
+    background-color: #ddd;
 }
 
 #myBar {
-  width: 10%;
-  height: 30px;
-  background-color: #0A7E8C;;
-  text-align: center;
-  line-height: 30px;
-  color: white;
+    width: 10%;
+    height: 30px;
+    background-color: #0A7E8C;
+    ;
+    text-align: center;
+    line-height: 30px;
+    color: white;
 }
+
 /* loading bar*/
 
 /* status*/
@@ -104,51 +128,67 @@ form  button {
 .status {
     position: absolute;
     display: inline-block;
-   
 }
 
 .status .statusText {
-    
     width: 150px;
     background-color: black;
     color: #fff;
     border-radius: 6px;
     padding: 5px 8px;
-
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
 }
+
 /* status*/
 
 .wrapper {
-  min-height: 670px; 
+    min-height: 670px;
 }
 
-
-#dialogbox{
-	display: none;
-	position: fixed;
-	background:  #000;
-	border-radius:7px; 
-	width:350px;
-	z-index: 10;
+#dialogbox {
+    display: none;
+    position: fixed;
+    background: #000;
+    border-radius: 7px;
+    width: 350px;
+    z-index: 10;
 }
-#dialogbox > div{ background:#FFF; margin:3px; }
-#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
-#dialogbox > div > #dialogboxbody{ background: #333; padding:20px; color:#FFF; }
-#dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
 
+#dialogbox>div {
+    background: #FFF;
+    margin: 3px;
+}
+
+#dialogbox>div>#dialogboxhead {
+    background: #666;
+    font-size: 19px;
+    padding: 10px;
+    color: #CCC;
+}
+
+#dialogbox>div>#dialogboxbody {
+    background: #333;
+    padding: 20px;
+    color: #FFF;
+}
+
+#dialogbox>div>#dialogboxfoot {
+    background: #666;
+    padding: 10px;
+    text-align: right;
+}
 
 h {
-	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
-	margin-left:8px;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体";
+    margin-left: 8px;
     display: inline;
     font-size: 170%;
 }
 
 p.drankCups {
-    font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体";
     display: inline;
     font-size: 170%;
 }
@@ -157,54 +197,60 @@ img.middle {
     vertical-align: middle;
 }
 
-
-
-table{
-    
+table {
     border-collapse: collapse;
-     width: 350px;
+    width: 350px;
 }
+
 th, td {
     padding: 6px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    
 }
-tr:hover {background-color: #ddd;}
+
+tr:hover {
+    background-color: #ddd;
+}
+
 td {
     height: 25px;
 }
-tr:nth-child(odd){background-color: #f2f2f2}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2
+}
+
 th {
     background-color: #0A7E8C;
     color: white;
 }
 
-#exitDisplay{
-	font-size: 2.5em;
+#exitDisplay {
+    font-size: 2.5em;
 }
 
 .playButton {
-  padding: 8px 20px;
-  font-size: 24px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: #fff;
-  background-color: #0A7E8C;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+    padding: 8px 20px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #0A7E8C;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
 }
 
-.playButton:hover {background-color: #2F4F4F}
+.playButton:hover {
+    background-color: #2F4F4F
+}
 
 .playButton:active {
-  background-color: 	#808080;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+    background-color: #808080;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
-
 
 .btnS {
     border: none;
@@ -214,9 +260,15 @@ th {
     cursor: pointer;
 }
 
+.smallButton {
+    background-color: #0A7E8C;
+}
 
-.smallButton {background-color: #0A7E8C;} /* Blue */
-.smallButton:hover {background: #2F4F4F;}
+/* Blue */
+
+.smallButton:hover {
+    background: #2F4F4F;
+}
 
 .dropdown-submenu {
     position: relative;
@@ -226,130 +278,114 @@ th {
     top: 0;
     left: 100%;
     margin-top: -1px;
-    
-}
-#chooseTables{
-	display:none;
-	//display: inline
 }
 
-
+#chooseTables {
+    display: none;
+    //display: inline
+}
 
 #messages {
-border: 5px ridge #0A7E8C;
-border-radius: 10px;
-margin-top: 15px;
-margin-bottom: 15px;
-visibility: hidden
+    border: 5px ridge #0A7E8C;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    visibility: hidden
 }
 
-#message-container{
-border: 5px ridge #0A7E8C;
-border-radius: 10px;
-margin-top: 15px;
-margin-bottom: 15px;
+#message-container {
+    border: 5px ridge #0A7E8C;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .wrapperL {
-   position: absolute;
-   width: 280px;
-  height: 650px;
-}   
+    position: absolute;
+    width: 280px;
+    height: 650px;
+}
 
 .wrapperM {
     position: absolute;
-    left:290px;
+    left: 290px;
     height: 650px;
     width: 880px;
-    margin-top:50px;
+    margin-top: 50px;
 }
 
 .wrapperR {
     position: absolute;
-    left:770px;
+    left: 770px;
     height: 650px;
     width: 370px;
 }
 
-
-
 @media screen and (min-width: 1000px) {
-
-.wrapperM {
-     left:375px;
-}
-
-.wrapperR {
-    left:910px;
-}
-
+    .wrapperM {
+        left: 375px;
+    }
+    .wrapperR {
+        left: 910px;
+    }
 }
 
 @media screen and (min-width: 1400px) {
-
-.wrapperM {
-     left:425px;
-}
-
-.wrapperR {
-    left:960px;
-}
+    .wrapperM {
+        left: 425px;
+    }
+    .wrapperR {
+        left: 960px;
+    }
 }
 
 @media screen and (min-height: 700px) {
-  .wrapper {
-  min-height: 100%;
- margin-bottom: -50px;
-  /* Equal to height of footer */
-  /* But also accounting for potential margin-bottom of last child */
- 
-}
-}
-
-@media only screen and (max-device-width: 1024px) and  (orientation:portrait) { 
-
-    .footer{
-     width:100%;
-     position:fixed;
-     bottom:0px;
-    }
-
-}
-
-@media only screen and (max-device-width: 1024px) and  (orientation:landscape) { 
-
-    .footer{
-     width:100%;
-     position:fixed;
-     bottom:0px;
+    .wrapper {
+        min-height: 100%;
+        margin-bottom: -50px;
+        /* Equal to height of footer */
+        /* But also accounting for potential margin-bottom of last child */
     }
 }
 
+@media only screen and (max-device-width: 1024px) and (orientation:portrait) {
+    .footer {
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+    }
+}
 
+@media only screen and (max-device-width: 1024px) and (orientation:landscape) {
+    .footer {
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+    }
+}
 
 select {
-   visibility :hidden;
+    visibility: hidden;
 }
 
 hr {
-   display: block;
-   position: relative;
-   padding: 0;
-   margin: 8px auto;
-   height: 0;
-   width: 60%;
-   max-height: 0;
-   font-size: 1px;
-   line-height: 0;
-   clear: both;
-   border: none;
-   border-top: 1px solid #808080;
-   border-bottom: 1px solid #aaaaaa;
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 8px auto;
+    height: 0;
+    width: 60%;
+    max-height: 0;
+    font-size: 1px;
+    line-height: 0;
+    clear: both;
+    border: none;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #aaaaaa;
 }
 
-
 .footer {
-  font-size: 10px;
-  height: 50px;
-  text-align:center
+    font-size: 10px;
+    height: 50px;
+    text-align: center
 }
