@@ -2,8 +2,8 @@ var dragSrcEl = null;
 var cards = document.querySelectorAll('.card');
 
 function handleDragStart(e) {
-    this.style.opacity = '0.4';  // this / e.target is the source node.
-  
+  this.style.opacity = '0.4';  // this / e.target is the source node.
+
   dragSrcEl = this;
 
   e.dataTransfer.effectAllowed = 'move';
@@ -30,7 +30,7 @@ function handleDragLeave(e) {
 }
 
 function handleDrop(e) {
-  if(e.preventDefault) { e.preventDefault(); }
+  if (e.preventDefault) { e.preventDefault(); }
   if (e.stopPropagation) {
     e.stopPropagation(); // Stops some browsers from redirecting.
   }
@@ -41,17 +41,17 @@ function handleDrop(e) {
     mySound.set("/sounds/moveCards.mp3")
     dragSrcEl.innerHTML = this.innerHTML;
     this.innerHTML = e.dataTransfer.getData('text');
-    
-     this.style.opacity = "1";
-      dragSrcEl.style.opacity = "1";
+
+    this.style.opacity = "1";
+    dragSrcEl.style.opacity = "1";
   }
-  
+
   return false;
 }
 
 function handleDragEnd(e) {
-   dragSrcEl.style.opacity = "1";
-     // this / e.target is the source node.
+  dragSrcEl.style.opacity = "1";
+  // this / e.target is the source node.
   // this/e.target is the source node.
 
 
@@ -62,7 +62,7 @@ function handleDragEnd(e) {
 }
 
 
-[].forEach.call(cards, function(card) {
+[].forEach.call(cards, function (card) {
   card.addEventListener('dragstart', handleDragStart, false);
   card.addEventListener('dragenter', handleDragEnter, false)
   card.addEventListener('dragover', handleDragOver, false);
@@ -73,7 +73,7 @@ function handleDragEnd(e) {
 
 
 selects = document.getElementsByClassName("select");
- 
-[].forEach.call(selects, function(s) {
-   s.addEventListener("click", loginTables)
-   });
+
+[].forEach.call(selects, function (s) {
+  s.addEventListener("click", loginTables)
+});
