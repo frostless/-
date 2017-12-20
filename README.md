@@ -8,7 +8,7 @@ Installation Instructions:
 
 3:Execute <code>nodemon server.js</code>, to launch the server, the port number is set to 8000.
 
-4:Open another command line window,<code>execute mongod<c/ode>, to lauch the mongo db server.
+4:Open another command line window,<code>execute mongod</code>, to lauch the mongo db server.
 
 5:You can open another command line window and execute <code>mongo</code>, to see the data or the database structure.Currently there are four documents.
 
